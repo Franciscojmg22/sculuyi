@@ -1,0 +1,174 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Geoilica', sans-serif;
+}
+
+.header{
+    height: 12vh;
+    width: block;
+    background-color: #124e78;
+    color: #f8f8ed;
+    display: flex;
+    flex-direction: row;
+    
+    transition: margin-left 0.6s ease;
+}
+
+.header-shift{
+    margin-inline-start: 250px;
+}
+
+
+.headerDiv{
+    height: 100%;
+    width: 33%;
+    display: inherit;
+    align-items: center;
+    padding-inline-end: 20px;
+    font-size: large;
+}
+
+.headerDiv input{
+    width: 73%;
+    height: 80%;
+    border: 0px;
+    border-radius: 5px; 
+    border: 1px solid rgb(47, 0, 255);
+    background-color: #f0f0c9;
+}
+
+.headerDiv input:focus{
+    outline: none;
+    width: 73%;
+    height: 80%;
+    border: 0px;
+    border-radius: 5px;
+    border: 3px solid #FA9500;
+}
+
+.headerDiv input:hover{
+    border: 3px solid #FA9500;
+}
+
+.menu{
+    margin-inline-start: 20px;
+    height: 100%;
+    font-size: 26px;
+    border: 2px black;
+}
+
+.busqueda{
+    height: 70%;
+    width:90%;
+
+}
+
+.usuario{
+    width:90%;
+}
+
+.hover{
+    display: inherit;
+    justify-content: inherit;
+    align-items: inherit;
+}
+
+.header .hover:hover{
+    color: #FA9500;
+    font-weight: bold;
+}
+
+.icoContainer{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.icoContainer img{
+    width: 100%;
+    height: 100%;
+}
+
+.nombreUsuario{
+    font-size: 25px;
+}
+
+.input-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+
+.footer{
+    height: 10vh;
+    width: block;
+    background-color: #53917e;
+    transition: margin-left 0.6s ease;
+}
+
+.footer-shift{
+    margin-inline-start: 250px;
+}
+
+main{
+    height: 78vh;
+    width: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0c9;
+    /*#f0f0c9;*/
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #f7a1c4;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    transition: left 0.6s ease;
+  }
+
+  .show-sidebar {
+    left: 0;
+  }
+  
+  .mainContainer {
+    margin-left: 0;
+    transition: margin-left 0.6s ease;
+  }
+  
+  .mainContainer-shift {
+    margin-left: 250px;
+  }
+  
+
+a{
+    color: white;
+}
+
+.sideMenu{
+    width: block;
+    height: 15%;
+    border: 1px solid black;
+}
+
+.sideLista{
+    width: block;
+    height: 85%;
+    border: 1 solid black;
+}
+
+.row{
+    height: min-content;
+    width: fit-content;
+    margin-block: 25px;
+    margin-inline-start: 20px;
+    border: 1px solid orange;
+}
