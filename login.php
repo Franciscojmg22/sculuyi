@@ -70,6 +70,7 @@ if (!empty($_POST['correo']) && !empty($_POST['contrasena'])) {
         <input type="contrasena" name="contrasena" placeholder="Enter Your Password...">
         <input type="submit" value="Login">
       </form>
+      <span> New User? - <a href="registro.php">Sign Up</a></span>
     </div>
   </div>
 </main>

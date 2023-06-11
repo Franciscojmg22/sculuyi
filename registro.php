@@ -79,6 +79,7 @@ if (!empty($_POST['correo']) && !empty($_POST['contrasena']) && !empty($_POST['c
             <span> or <a href="login.php"> Log In</a></span>
 
             <form action="registro.php" method="post">
+                <input type="nombre" name="nombre" placeholder="Enter Your Name...">
                 <input type="correo" name="correo" placeholder="Enter Your Email...">
                 <input type="contrasena" name="contrasena" placeholder="Enter Your Password...">
                 <input type="contrasena" name="contrasenna" placeholder="Confirm Your Password...">
