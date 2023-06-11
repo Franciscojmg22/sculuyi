@@ -2,6 +2,7 @@ body{
     margin: 0px;
     padding: 0px;
     width: 100vw;
+    max-width: 100vw;
     height: 100vh;
     font-family: 'Geoilica', sans-serif;
 }
@@ -115,15 +116,7 @@ body{
     margin-inline-start: 250px;
 }
 
-main{
-    height: 78vh;
-    width: block;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0c9;
-    /*#f0f0c9;*/
-}
+
 
 .sidebar {
     width: 250px;
@@ -140,14 +133,31 @@ main{
   }
   
   .mainContainer {
-    margin-left: 0;
-    transition: margin-left 0.6s ease;
+    max-width: calc(100% - 10vw);
+    height: 90%;
+    justify-self: center;
+    align-self: center;
+    margin: 0;
   }
   
   .mainContainer-shift {
     margin-left: 250px;
+    max-width: calc(100% - 250px);
   }
   
+  main{
+    height: 78vh;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0c9;
+    /*#f0f0c9;*/
+
+    margin-left: 0;
+    transition: max-width 0.6s ease, margin-left 0.6s ease;
+}
 
 a{
     color: white;
