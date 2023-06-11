@@ -1,48 +1,74 @@
 <?php require_once('./components/header.php') ?>
 <main id="mainContainer">
     <div class="mainContainer grid">
-        <div class="item">One</div>
-        <div class="item">Two</div>
-        <div class="item">Three</div>
-        <div class="item">Four</div>
-        <div class="item">Five</div>
-        <div class="item">Six</div>
-        <div class="item">One</div>
-        <div class="item">Two</div>
-        <div class="item">Three</div>
-        <div class="item">Four</div>
-        <div class="item">Five</div>
-        <div class="item">Six</div>
+
     </div>
 </main>
+
+<template id="temCursos">
+    <div class="item">
+        <div class="itemImgContainer">
+            Aplicaciones de internet
+        </div>
+        <div class="itemInfContainer">
+            <p class="temNomCur"> nombre de curso:----- </p>
+            <p class="temProfesor"> profesor: ------- </p>
+        </div>
+    </div>
+</template>
+
 <?php require_once('./components/footer.php') ?>
+
 
 <style>
     .grid {
-        border: 2px solid orange;
         width: 100%;
-        max-height: 100%;
+        max-height: fit-content;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(20vw, 20vw));
         grid-template-rows: repeat(auto-fit, minmax(20vh, 20vh));
         row-gap: 4vh;
-
-
     }
 
     .item {
-        border: 1px solid black;
-        height: 100%;
+        height: 20vh;
         width: 20vw;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .itemImgContainer{
+        height: 13vh;
+        min-height: 13vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: orange;
+        color: white;
+        font-size: larger;
+    }
+
+    .itemInfContainer{
+        height: 7vh;
+        min-height: 7vh;
+        width: 100%;
+        display: flex;
+        flex-direction: columns;
+        justify-content: start;
+        align-items: center;
+        background-color: white;
     }
 </style>
 
 <script>
     const main = document.getElementById('mainContainer')
-        const elementoGrid = document.querySelector('.grid')
-    const animacionGrid = () => {
-        
+    const elementoGrid = document.querySelector('.grid')
+    const temCursos = document.getElementById('temCursos').content
+    const fragment = document.createDocumentFragment()
 
+
+    const animacionGrid = () => {
         const vw = window.innerWidth / 100
         const mingap = 30
         let anchoGrid = elementoGrid.offsetWidth 
@@ -50,7 +76,7 @@
         let numCols = Math.floor( anchoGrid / (vw * 20 + 30) ) 
         let numGaps = numCols - 1
         let porcentajeCols = (numCols * 20 * vw * 100) /anchoGrid
-        let gap = Math.floor( (100 - porcentajeCols) / 3 )
+        let gap = Math.floor( (100 - porcentajeCols) / numGaps )
 
         elementoGrid.style.columnGap = gap + '%'
 
@@ -64,7 +90,20 @@
 
     window.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animacionGrid)
+        
+        const ejemploTemplete = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+        ejemploTemplete.forEach(element => {
+            temCursos.querySelector('.temNomCur').textContent = 'Nombre de curso: '
+            temCursos.querySelector('.temProfesor').textContent = 'Profesor: '
+
+            const clone = temCursos.cloneNode(true)
+            fragment.appendChild(clone)
+            elementoGrid.appendChild(fragment)
+        })
     })
+
+
 
     
 </script>

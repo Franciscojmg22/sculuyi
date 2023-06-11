@@ -134,10 +134,12 @@ body{
   
   .mainContainer {
     max-width: calc(100% - 10vw);
-    height: 90%;
-    justify-self: center;
-    align-self: center;
+    height: fit-content;
     margin: 0;
+    margin-block: 2%;
+    justify-self: center;
+    align-self: start;
+    
   }
   
   .mainContainer-shift {
@@ -151,13 +153,25 @@ body{
     max-width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     background-color: #f0f0c9;
-    /*#f0f0c9;*/
 
+    overflow: overlay;
     margin-left: 0;
     transition: max-width 0.6s ease, margin-left 0.6s ease;
 }
+
+main::-webkit-scrollbar{
+    width: 8px;
+    margin-right: 3px;
+    background: rgba(151, 151, 151, 0.2);
+}
+
+main::-webkit-scrollbar-thumb{
+    background: #124e78;
+    border-radius: 4px;
+}
+
 
 a{
     color: white;
