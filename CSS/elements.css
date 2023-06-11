@@ -182,3 +182,94 @@ a{
     margin-inline-start: 20px;
     border: 1px solid orange;
 }
+
+/*Apartado de Log In y Registro*/
+.mainContainerLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .loginBox {
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .loginBox h1 {
+    text-align: center;
+  }
+  
+  .loginBox span {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .loginBox input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .loginBox input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .loginBox input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  .registerBox {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+  }
+  
+  .registerBox h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .registerBox span {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .registerBox form {
+    margin-top: 20px;
+  }
+  
+  .registerBox input[type="email"],
+  .registerBox input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .registerBox input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .registerBox input[type="submit"]:hover {
+    background-color: #45a049;
+  }
