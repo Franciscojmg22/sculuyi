@@ -1,10 +1,10 @@
 <?php
 session_start();
 if (isset($_SESSION['user_id'])) {
-    header('Location: home.php');
+    header('Location: index.php');
 }
 
-require 'database.php';
+require 'connection.php';
 
 if (!empty($_POST['correo']) && !empty($_POST['contrasena'])) {
     $correo = $_POST['correo'];

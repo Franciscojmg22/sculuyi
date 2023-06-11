@@ -1,58 +1,57 @@
 <?php 
-    require 'database.php';
-    $message = '';
+require 'connection.php';
+$message = '';
 
-    if (!empty($_POST['correo']) && !empty($_POST['contrasena']) && !empty($_POST['contrasenna'])) {
-        if ($_POST['contrasena'] === $_POST['contrasenna']) {
-            $correo = $_POST['correo'];
+if (!empty($_POST['correo']) && !empty($_POST['contrasena']) && !empty($_POST['contrasenna'])) {
+    if ($_POST['contrasena'] === $_POST['contrasenna']) {
+        $correo = $_POST['correo'];
+        $contrasena = $_POST['contrasena'];
+        $role = $_POST['role'];
 
-            // Consulta SQL para buscar si el correo electrónico ya existe en la tabla "alumno"
-            $check_correo_alumno_sql = "SELECT * FROM alumno WHERE correo = :correo";
-            $check_correo_alumno_stmt = $conn->prepare($check_correo_alumno_sql);
-            $check_correo_alumno_stmt->bindParam(':correo', $correo);
-            $check_correo_alumno_stmt->execute();
-            $alumno = $check_correo_alumno_stmt->fetch(PDO::FETCH_ASSOC);
+        // Consulta SQL para buscar si el correo electrónico ya existe en la tabla "alumno"
+        $check_correo_alumno_sql = "SELECT * FROM alumno WHERE correo = :correo";
+        $check_correo_alumno_stmt = $conn->prepare($check_correo_alumno_sql);
+        $check_correo_alumno_stmt->bindParam(':correo', $correo);
+        $check_correo_alumno_stmt->execute();
+        $alumno = $check_correo_alumno_stmt->fetch(PDO::FETCH_ASSOC);
 
-            // Consulta SQL para buscar si el correo electrónico ya existe en la tabla "maestro"
-            $check_correo_maestro_sql = "SELECT * FROM maestros WHERE correo = :correo";
-            $check_correo_maestro_stmt = $conn->prepare($check_correo_maestro_sql);
-            $check_correo_maestro_stmt->bindParam(':correo', $correo);
-            $check_correo_maestro_stmt->execute();
-            $maestro = $check_correo_maestro_stmt->fetch(PDO::FETCH_ASSOC);
+        // Consulta SQL para buscar si el correo electrónico ya existe en la tabla "maestros"
+        $check_correo_maestro_sql = "SELECT * FROM maestros WHERE correo = :correo";
+        $check_correo_maestro_stmt = $conn->prepare($check_correo_maestro_sql);
+        $check_correo_maestro_stmt->bindParam(':correo', $correo);
+        $check_correo_maestro_stmt->execute();
+        $maestro = $check_correo_maestro_stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($alumno || $maestro) {
-                // Si el correo electrónico ya existe en alguna tabla, muestra un mensaje de error
-                $message = 'This email is already registered. Please use a different correo address.';
-            } else {
-                // Si el correo electrónico no existe en ninguna tabla, inserta el nuevo usuario según su tipo
-                $contrasena = $_POST['contrasena'];
-
-                if (/* Condicional para determinar si es un alumno */) {
-                    // Insertar en la tabla "alumno"
-                    $sql = "INSERT INTO alumno (correo, password) VALUES (:correo, :password)";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bindParam(':correo', $correo);
-                    $newPass = password_hash($contrasena, PASSWORD_BCRYPT);
-                    $stmt->bindParam(':contrasena', $newPass);
-                } else {
-                    // Insertar en la tabla "maestro"
-                    $sql = "INSERT INTO maestros (correo, password) VALUES (:correo, :password)";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bindParam(':correo', $correo);
-                    $newPass = password_hash($contrasena, PASSWORD_BCRYPT);
-                    $stmt->bindParam(':contrasena', $newPass);
-                }
-
-                if ($stmt->execute()) {
-                    $message = 'Successfully Created a New User';
-                } else {
-                    $message = 'Sorry, Your User was not created';
-                }
-            }
+        if ($alumno || $maestro) {
+            // Si el correo electrónico ya existe en alguna tabla, muestra un mensaje de error
+            $message = 'This email is already registered. Please use a different correo address.';
         } else {
-            $message = 'Passwords do not match';
+            if ($role === 'alumnos') {
+                // Insertar en la tabla "alumno"
+                $sql = "INSERT INTO alumno (correo, password) VALUES (:correo, :password)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':correo', $correo);
+                $newPass = password_hash($contrasena, PASSWORD_BCRYPT);
+                $stmt->bindParam(':password', $newPass);
+            } else {
+                // Insertar en la tabla "maestros"
+                $sql = "INSERT INTO maestros (correo, password) VALUES (:correo, :password)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':correo', $correo);
+                $newPass = password_hash($contrasena, PASSWORD_BCRYPT);
+                $stmt->bindParam(':password', $newPass);
+            }
+
+            if ($stmt->execute()) {
+                $message = 'Successfully Created a New User';
+            } else {
+                $message = 'Sorry, Your User was not created';
+            }
         }
+    } else {
+        $message = 'Passwords do not match';
     }
+}
 ?>
 
 <!DOCTYPE html>
