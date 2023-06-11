@@ -54,10 +54,14 @@
         min-height: 7vh;
         width: 100%;
         display: flex;
-        flex-direction: columns;
-        justify-content: start;
-        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
         background-color: white;
+    }
+
+    .itemInfContainer p{
+        margin-block: 2px;
     }
 </style>
 
