@@ -1,0 +1,40 @@
+/*.img {
+    width: 40vw;
+    height: 40vh;
+
+} */
+
+.about {
+    width: 100%;
+    padding: 70px 0px;
+    background-color: antiquewhite;
+}
+
+.about img {
+    height: auto;
+    width: 400px;
+}
+
+.text-about{
+    width: 550px;
+}
+
+.main {
+    width: 1130px;
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.text-about h1{
+    color: black;
+    font-size: 42px;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+.text-about h3{
+    color: gray;
+}
