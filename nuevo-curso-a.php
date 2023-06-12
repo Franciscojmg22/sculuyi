@@ -1,11 +1,10 @@
 <?php
-//session_start();
+session_start();
 require 'connection.php';
 $maestro = 0;
 
 if (!$maestro) {
     $query = "SELECT * FROM cur_alu WHERE id_cur = :idCur AND id_alum = :idAlu";
-    //}
 
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':idCur', $_GET['idCur']);
@@ -17,7 +16,7 @@ if (!$maestro) {
 
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':idCur', $_GET['idCur']);
-        $stmt->bindParam(':idAlu', $_GET['idAlu']);
+        $stmt->bindParam(':idAlu', $_SESSION['user_id']);
         $stmt->execute();
     }
 

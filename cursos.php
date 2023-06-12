@@ -1,23 +1,22 @@
 <?php
 session_start();
 require 'connection.php';
-session_unset();
-session_destroy();
-$maestro = 1;
-$idEje = 2;
+
 //if(isset($_SESSION['user_id'])){
 
 $arrayId = array();
 $arrayPos = array();
 
-if (isset($idEje)) {
+if (isset($_SESSION['user_id'])) {
     $query = "SELECT maestros.nombre, curso.nom_curs, cur_prof.id
         FROM maestros 
         INNER JOIN cur_prof ON maestros.id = cur_prof.id_prof 
         INNER JOIN curso ON cur_prof.id_cur = curso.id ";
+    $registro = $conn->prepare($query);
+    $registro->execute();
 }
-$registro = $conn->prepare($query);
-$registro->execute();
+
+
 ?>
 
 <?php require_once('./components/header.php') ?>
@@ -34,9 +33,10 @@ $registro->execute();
                     <p class="temProfesor">
                         <?php echo 'profesor: ' . $resultado['nombre'] ?>
                     </p>
-                    <a href="nuevo-curso-a.php?idCur=<?php echo $resultado['id'] ?>&idAlu=<?php echo $idEje ?>" class="btn btn-warning" style="color: black">
+                    <a href="nuevo-curso-a.php?idCur=<?php echo $resultado['id']?>"
+                        class="btn btn-warning" style="color: black">
                         inscribete
-                </a>
+                    </a>
                 </div>
             </div>
 
@@ -49,8 +49,8 @@ $registro->execute();
             <p id="ncMensaje"> Agregar como nuevo curso</p>
         </div>
         <div class="ncAcciones">
-              <button id="btnConfirmar">confirmar</button>
-             
+            <button id="btnConfirmar">confirmar</button>
+
             <form action="">
                 <input type="submit" value="">
             </form>
