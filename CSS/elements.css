@@ -211,7 +211,7 @@ a{
   .loginBox {
     max-width: 400px;
     padding: 20px;
-    background-color: #f1f1f1;
+    background-color: #124e78;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
@@ -250,7 +250,7 @@ a{
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f5f5f5;
+    background-color: #124e78;
   }
   
   .registerBox h1 {

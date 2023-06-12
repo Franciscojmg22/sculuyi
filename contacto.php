@@ -23,7 +23,7 @@
                         <p>¿Qué tal?, soy Paco un chico al cual le gusta realizar programas como hobbie 
                             y trabajo de ello si quieres algún consejo mandame un mensaje
                         </p>
-                        <a href="https://www.youtube.com/watch?v=vFIyR9YbME0" class="face">
+                        <a href="" class="face">
                         <i class="bi bi-facebook"></i>
                         </a>
                         
@@ -45,6 +45,9 @@
                         <a href="https://www.facebook.com/jose.cabal.58" class="face">
                         <i class="bi bi-facebook"></i>
                             </a>
+                            <a href="https://www.instagram.com/jose_cabal15/" class="face">
+                            <i class="bi bi-instagram">  </i>
+                            </a>
                     </div>
                 </div>
 
@@ -64,7 +67,7 @@
                         <i class="bi bi-facebook"></i>
                         </a>    
                         
-                        <a href="https://www.facebook.com/Jashi.RL/" class="face">
+                        <a href="https://www.youtube.com/watch?v=vFIyR9YbME0" class="face">
                             <i class="bi bi-youtube" class="you"></i>
                         </a> 
                     </div>

@@ -21,6 +21,11 @@ SET time_zone = "+00:00";
 -- Base de datos: `sculuyi`
 --
 
+-- Crear la base de datos si no existe
+CREATE DATABASE IF NOT EXISTS sculuyi;
+
+USE sculuyi;
+
 -- --------------------------------------------------------
 
 --
@@ -31,7 +36,7 @@ CREATE TABLE `alumnos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `correo` varchar(255) NOT NULL,
-  `contrasena` varchar(255) NOT NULL,
+  `contrasena` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
