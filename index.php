@@ -1,24 +1,56 @@
+<?php
+session_start();
+require 'connection.php';
+$maestro = 0;
+$idEje = 1;
+//if(isset($_SESSION['user_maestro'])){
+if (isset($idEje)) {
+    if ($maestro) {
+        $query = "SELECT maestros.nombre, curso.nom_curs 
+        FROM maestros 
+        INNER JOIN cur_prof ON maestros.id = cur_prof.id_prof 
+        INNER JOIN curso ON cur_prof.id_cur = curso.id 
+        WHERE maestros.id = :id";
+    } else {
+        $query = "SELECT maestros.nombre, curso.nom_curs, cur_prof.id
+            FROM alumnos 
+            INNER JOIN cur_alu ON alumnos.id = cur_alu.id_alum 
+            INNER JOIN cur_prof ON cur_alu.id_cur = cur_prof.id
+            INNER JOIN maestros ON cur_prof.id_prof = maestros.id
+            INNER JOIN curso ON cur_prof.id_cur = curso.id
+            WHERE alumnos.id = :id";
+    }
+}
+$registro = $conn->prepare($query);
+//$registro->bindParam(':id', $_SESSION['user_id']);
+$registro->bindParam(':id', $idEje);
+$registro->execute();
+//$resultado = $registro->fetch(PDO::FETCH_ASSOC);
+//print_r($resultado);
+?>
+
 <?php require_once('./components/header.php') ?>
 <main id="mainContainer">
     <div class="mainContainer grid">
+        <?php while (($resultado = $registro->fetch(PDO::FETCH_ASSOC))): ?>
 
+            <div class="item" curProfId="<?php echo $resultado['id']?>">
+                <div class="itemImgContainer">
+                    <?php echo $resultado['nom_curs']?>
+                </div>
+                <div class="itemInfContainer">
+                  <!--  <p class="temNomCur"> nombre de curso:----- </p> -->
+                    <p class="temProfesor"> 
+                    <?php echo 'profesor: ' . $resultado['nombre']?>    
+                    </p>
+                </div>
+            </div>
+
+        <?php endwhile; ?>
     </div>
 </main>
 
-<template id="temCursos">
-    <div class="item">
-        <div class="itemImgContainer">
-            Aplicaciones de internet
-        </div>
-        <div class="itemInfContainer">
-            <p class="temNomCur"> nombre de curso:----- </p>
-            <p class="temProfesor"> profesor: ------- </p>
-        </div>
-    </div>
-</template>
-
 <?php require_once('./components/footer.php') ?>
-
 
 <style>
     .grid {
@@ -37,7 +69,7 @@
         flex-direction: column;
     }
 
-    .itemImgContainer{
+    .itemImgContainer {
         height: 13vh;
         min-height: 13vh;
         width: 100%;
@@ -47,9 +79,10 @@
         background-color: orange;
         color: white;
         font-size: larger;
+        text-align: center;
     }
 
-    .itemInfContainer{
+    .itemInfContainer {
         height: 7vh;
         min-height: 7vh;
         width: 100%;
@@ -60,7 +93,7 @@
         background-color: white;
     }
 
-    .itemInfContainer p{
+    .itemInfContainer p {
         margin-block: 2px;
     }
 </style>
@@ -68,9 +101,9 @@
 <script>
     const main = document.getElementById('mainContainer')
     const elementoGrid = document.querySelector('.grid')
-    const temCursos = document.getElementById('temCursos').content
     const fragment = document.createDocumentFragment()
 
+    
 
     const animacionGrid = () => {
         const vw = window.innerWidth / 100
@@ -88,23 +121,12 @@
             console.log('ancho => ', elementoGrid.offsetWidth , ' @@ num cols ', numCols , 'porcentajecol', porcentajeCols , 'gap', gap)
 
             requestAnimationFrame(animacionGrid)
-        }, 500)
+        },)
         
     }
 
     window.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animacionGrid)
-        
-        const ejemploTemplete = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-        ejemploTemplete.forEach(element => {
-            temCursos.querySelector('.temNomCur').textContent = 'Nombre de curso: '
-            temCursos.querySelector('.temProfesor').textContent = 'Profesor: '
-
-            const clone = temCursos.cloneNode(true)
-            fragment.appendChild(clone)
-            elementoGrid.appendChild(fragment)
-        })
     })
 
 

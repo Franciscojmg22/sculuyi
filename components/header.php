@@ -62,7 +62,7 @@
         <div class="headerDiv" style="justify-content: end;">
             <div class="usuario hover">
                 <div class="nombreUsuario">
-                    <p>nombre Usuario</p>
+                    <p id="nombreUsuario">nombre Usuario</p>
                 </div>
                 <div class="icoContainer">
                     <img src="./partials/1.jpg" alt="">

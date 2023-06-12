@@ -59,10 +59,11 @@
 
     const sideElements = document.getElementById('sd')
 
-
+    const nombreUsuario = document.getElementById('nombreUsuario')
 
     window.addEventListener('DOMContentLoaded', () => {
         localStorage.removeItem('sculuyiId')
+        nombreUsuario.textContent = "nom: <?php $nombreUsuario ?>" 
         //localStorage.setItem('sculuyiId', 1)
     })
 

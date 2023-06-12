@@ -4,9 +4,15 @@
     $username = '524465';
     $password = 'sculuyi2';
     $database = '524465';
+
+    $server = 'localhost';
+    $username = 'root';
+    $password = '';
+    $database = 'sculuyi';
     try {
         $conn = new PDO("mysql:host=$server; dbname=$database;", $username, $password);
     } catch (PDOException $error) {
         die('Connection Failed: ' . $error->getMessage());
     }
+    //echo 'conectoooooo'
 ?>
