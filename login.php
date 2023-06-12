@@ -26,6 +26,7 @@ if (!empty($_POST['correo']) && !empty($_POST['contrasena'])) {
         if ($maestro && password_verify($contrasena, $maestro['contrasena'])) {
             $_SESSION['user_id'] = $maestro['id'];
             $_SESSION['maestro'] = '1';
+            $_SESSION['user_id'] = $maestro['nombre'];
             header('Location: index.php');
         } else {
             $message = 'Invalid email or password. Please try again.';
@@ -33,6 +34,7 @@ if (!empty($_POST['correo']) && !empty($_POST['contrasena'])) {
     } else {
         if (password_verify($contrasena, $alumno['contrasena'])) {
             $_SESSION['user_id'] = $alumno['id'];
+            $_SESSION['nombre'] = $alumno['nombre'];
             header('Location: index.php');
         } else {
             $message = 'Invalid email or password. Please try again.';

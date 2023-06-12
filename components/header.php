@@ -20,28 +20,28 @@
         <div class="sideMenu">Menu</div>
         <div id="sd" class="sideLista">
             <div id="index" class="row">
-                <i class="fas bi-search" style="margin-inline-end: 3px;"></i>
+                <i id="index" class="fas bi-search" style="margin-inline-end: 3px;"></i>
                 Home
             </div>
             <div id="cursos" class="row">
-                <i class="fas bi-search" style="margin-inline-end: 3px;"></i>
+                <i id="cursos" class="fas bi-search" style="margin-inline-end: 3px;"></i>
                 Courses
             </div>
             <div id="maestros" class="row">
-                <i class="fas bi-search" style="margin-inline-end: 3px;"></i>
+                <i id="maestros" class="fas bi-search" style="margin-inline-end: 3px;"></i>
                 Teachers
             </div>
             <div id="acerca" class="row">
-                <i class="fas bi-search" style="margin-inline-end: 3px;"></i>
+                <i id="acerca" class="fas bi-search" style="margin-inline-end: 3px;"></i>
                 About us
             </div>
             <div id="contacto" class="row">
-                <i class="fas bi-search" style="margin-inline-end: 3px;"></i>
+                <i id="contacto" class="fas bi-search" style="margin-inline-end: 3px;"></i>
                 Constact us
             </div>
             <div id="logout" class="row">
-            <i class="fas bi-search" style="margin-inline-end: 3px;"></i>
-                <a href="logout.php">Log Out</a>
+            <i id="logout" class="fas bi-search" style="margin-inline-end: 3px;"></i>
+                <a href="./logout.php">Log Out</a>
             </div>
         </div>
     </div>
@@ -65,7 +65,16 @@
         <div class="headerDiv" style="justify-content: end;">
             <div class="usuario hover">
                 <div class="nombreUsuario">
-                    <p>nombre Usuario</p>
+                    <p>
+                        <?php if(isset($_SESSION['nombre'])):?>
+                            <p>
+                                <?php  echo 'nom: '.$_SESSION['nombre']; ?>
+                            </p>
+                        <?php else: ?>
+                            <p>Nombre Usuario</p>
+                        <?php endif;?>
+                    
+                </p>
                 </div>
                 <div class="icoContainer">
                     <img src="./partials/1.jpg" alt="">

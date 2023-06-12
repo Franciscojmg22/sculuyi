@@ -63,12 +63,7 @@
 
     window.addEventListener('DOMContentLoaded', () => {
         localStorage.removeItem('sculuyiId')
-        nombreUsuario.textContent = "nom: <?php $nombreUsuario ?>" 
-        <?php if(!isset($_SESSION['user_id'])):?>
-                console.log('no hay usuario')
-            <?php else: ?>
-                console.log('si hay usuario')
-             <?php endif ?>
+        
         //localStorage.setItem('sculuyiId', 1)
     })
 
@@ -96,10 +91,12 @@
                     noLoginDialog.close()
                 }, 1600)
             <?php else: ?>
+
                 const url = './' + id + '.php'
                 console.log('Esta es la url ', url)
                 window.location.href = url
-             <?php endif ?>
+             
+                <?php endif ?>
 
 
 

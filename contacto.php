@@ -1,3 +1,4 @@
+<?php  session_start()?>
 <?php require_once('./components/header.php')?>
 
 <!-- link a la hoja de estilos par ahcer las cartas -->

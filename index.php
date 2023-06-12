@@ -1,15 +1,6 @@
 <?php
 session_start();
 require 'connection.php';
-//session_unset();
-//session_destroy();
-//$_SESSION['user_id'] = '1';
-//$_SESSION['maestro'] = '1';
-if (!isset($_SESSION['user_id'])) {
-    echo 'no hay usuario';
-} else {
-    echo 'si hay usuario';
-}
 
 //if(isset($_SESSION['user_maestro'])){
 if (isset($_SESSION['user_id'])) {
