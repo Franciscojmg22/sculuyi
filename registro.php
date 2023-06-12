@@ -46,7 +46,7 @@ if (!empty($_POST['nombre']) &&!empty($_POST['correo']) && !empty($_POST['contra
             }
             if ($stmt->execute()) {
                 $message = 'Successfully Created a New User';
-                header('Location: login.php');
+                header('Location: ./index.php');
                 echo 'Registro Funcional';
             } else {
                 $message = 'Sorry, Your User was not created';
