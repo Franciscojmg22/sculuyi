@@ -67,6 +67,8 @@
                         <h3>Sensei uwu </h3>
                     </div>
                 </div>
+
+
                 <div class="card">
                     <figure>
                         <img src="./visuales/marco-polo.jpg" class="img-jashi" >
@@ -75,6 +77,8 @@
                         <h3>Marco Aurelio</h3>
                     </div>
                 </div>
+
+                
             </div>
         </div>
     </main>
