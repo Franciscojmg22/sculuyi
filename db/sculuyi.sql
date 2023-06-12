@@ -42,7 +42,7 @@ CREATE TABLE `alumnos` (
 
 CREATE TABLE `curso` (
   `id` int(11) NOT NULL,
-  `nom_curs` varchar(60) NOT NULL,
+  `nom_curs` varchar(255) NOT NULL,
   `descripcion` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
