@@ -1,6 +1,6 @@
 <footer>
     <div id="footer" class="footer">
-        footer
+    Todos los Derechos Reservados Sculuyi ©
     </div>
 </footer>
 </body>

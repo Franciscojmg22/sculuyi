@@ -47,7 +47,7 @@ if (!empty($_POST['nombre']) &&!empty($_POST['correo']) && !empty($_POST['contra
             }
             if ($stmt->execute()) {
                 $message = 'Successfully Created a New User';
-                header('Location: login.php');
+                header('Location: ./index.php');
                 echo 'Registro Funcional';
             } else {
                 $message = 'Sorry, Your User was not created';
@@ -83,7 +83,7 @@ if (!empty($_POST['nombre']) &&!empty($_POST['correo']) && !empty($_POST['contra
 
             <h1>Sign Up Please</h1>
 
-            <form action="registro.php" method="post">
+            <form action="./registro.php" method="post">
                 <input type="text" name="nombre" placeholder="Enter Your Name...">
                 <input type="correo" name="correo" placeholder="Enter Your Email...">
                 <input type="contrasena" name="contrasena" placeholder="Enter Your Password...">
