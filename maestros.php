@@ -15,12 +15,12 @@
                     </figure>
                     <div class="contenido">
                         <h3>Johnny Johnson </h3>
-                        <p>¿Qué tal?, soy johnny uun profesor de desarrollo web enfocado a VUE3js
+                        <!-- <p>¿Qué tal?, soy johnny uun profesor de desarrollo web enfocado a VUE3js
                             tengo 27 años y me entusiasma estar enseñando en esta plataforma
                         </p>
                         <a href="" class="face">
                         <i class="bi bi-facebook"></i>
-                        </a>
+                        </a> -->
                         
                     </div>
                 </div>
@@ -29,20 +29,11 @@
                     
                 <div class="card">
                     <figure>
-                        <img src="./visuales/pic_cabal.jpg" class="img-cabal" >
+                        <img src="./visuales/peter.png" class="img-cabal" >
                     </figure>
                     <div class="contenido">
-                        <h3>José Edaurdo Cabal Páramo  </h3>
-                        <p>Hola, tengo 21 años y me gusta mucho realizar programación web, domino JavaScript,
-                            Html, Css, PHP si tienes alguna sobre alguna función
-                            contactate conmigo
-                        </p>
-                        <a href="https://www.facebook.com/jose.cabal.58" class="face">
-                        <i class="bi bi-facebook"></i>
-                            </a>
-                            <a href="https://www.instagram.com/jose_cabal15/" class="face">
-                            <i class="bi bi-instagram">  </i>
-                            </a>
+                        <h3>Peter B. Parker</h3>
+                       
                     </div>
                 </div>
 
@@ -50,11 +41,11 @@
 
                 <div class="card">
                     <figure>
-                        <img src="./visuales/pic_jashi.jpg" class="img-jashi" >
+                        <img src="./visuales/obi-wan.jpeg" class="img-jashi" >
                     </figure>
                     <div class="contenido">
-                        <h3>Jashiel Robles Lecona </h3>
-                        <p>Soy un jovén de 20 años al cual le encanta la programación,
+                        <h3>Obi-wan Kenobi</h3>
+                    <!--    <p>Soy un jovén de 20 años al cual le encanta la programación,
                         procuro siempre estar al dia con los nuevos frameworks y
                         si quieres algún consejo sobre frameworks no dudes en contactarte conmigo
                         </p>
@@ -64,26 +55,24 @@
                         
                         <a href="https://www.youtube.com/watch?v=vFIyR9YbME0" class="face">
                             <i class="bi bi-youtube" class="you"></i>
-                        </a> 
+                        </a>  -->
+                    </div>
+                </div>
+
+                <div class="card">
+                    <figure>
+                        <img src="./visuales/uwu.png" class="img-jashi" >
+                    </figure>
+                    <div class="contenido">
+                        <h3>Sensei uwu </h3>
                     </div>
                 </div>
                 <div class="card">
                     <figure>
-                        <img src="./visuales/pic_jashi.jpg" class="img-jashi" >
+                        <img src="./visuales/marco-polo.jpg" class="img-jashi" >
                     </figure>
                     <div class="contenido">
-                        <h3>Jashiel Robles Lecona </h3>
-                        <p>Soy un jovén de 20 años al cual le encanta la programación,
-                        procuro siempre estar al dia con los nuevos frameworks y
-                        si quieres algún consejo sobre frameworks no dudes en contactarte conmigo
-                        </p>
-                        <a href="https://www.facebook.com/Jashi.RL/" class="face">
-                        <i class="bi bi-facebook"></i>
-                        </a>    
-                        
-                        <a href="https://www.youtube.com/watch?v=vFIyR9YbME0" class="face">
-                            <i class="bi bi-youtube" class="you"></i>
-                        </a> 
+                        <h3>Marco Aurelio</h3>
                     </div>
                 </div>
             </div>
