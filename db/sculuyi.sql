@@ -29,10 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alumnos` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(60) NOT NULL,
-  `correo` varchar(30) NOT NULL,
-  `contrasena` varchar(20) NOT NULL,
-  `contrasenna` varchar(20) NOT NULL
+  `nombre` varchar(255) NOT NULL,
+  `correo` varchar(255) NOT NULL,
+  `contrasena` varchar(255) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -43,7 +42,7 @@ CREATE TABLE `alumnos` (
 
 CREATE TABLE `curso` (
   `id` int(11) NOT NULL,
-  `nom_curs` varchar(60) NOT NULL,
+  `nom_curs` varchar(255) NOT NULL,
   `descripcion` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -79,10 +78,9 @@ CREATE TABLE `cur_prof` (
 
 CREATE TABLE `maestros` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(60) NOT NULL,
-  `correo` varchar(40) NOT NULL,
-  `contrasena` varchar(30) NOT NULL,
-  `contrasenna` varchar(30) NOT NULL
+  `nombre` varchar(255) NOT NULL,
+  `correo` varchar(255) NOT NULL,
+  `contrasena` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

@@ -1,5 +1,5 @@
 <?php require_once('./components/header.php')?>
-<link rel="stylesheet" href="./css/contact.css">
+<link rel="stylesheet" href="./css/about.css">
     <main>
        <div id="mainContainer" class="mainContainer">
            <section class="about">

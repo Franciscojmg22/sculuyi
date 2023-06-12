@@ -39,7 +39,10 @@
                 <i class="fas bi-search" style="margin-inline-end: 3px;"></i>
                 Constact us
             </div>
-
+            <div id="logout" class="row">
+            <i class="fas bi-search" style="margin-inline-end: 3px;"></i>
+                <a href="logout.php">Log Out</a>
+            </div>
         </div>
     </div>
 
