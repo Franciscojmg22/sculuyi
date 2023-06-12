@@ -1,5 +1,6 @@
 <!--Creo que esta linea es importante para la conexion a la base de datos, si ven algun problema lo comentan porfavor-->
 <?php 
+
     $server = 'localhost:8889';
     $username = 'root';
     $password = 'root';

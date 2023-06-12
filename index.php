@@ -3,9 +3,9 @@ session_start();
 require 'connection.php';
 //session_unset();
 //session_destroy();
-$_SESSION['user_id'] = '1';
-$_SESSION['maestro'] = '1';
-if(!isset($_SESSION['user_id'])){
+//$_SESSION['user_id'] = '1';
+//$_SESSION['maestro'] = '1';
+if (!isset($_SESSION['user_id'])) {
     echo 'no hay usuario';
 } else {
     echo 'si hay usuario';
@@ -28,11 +28,11 @@ if (isset($_SESSION['user_id'])) {
             INNER JOIN curso ON cur_prof.id_cur = curso.id
             WHERE alumnos.id = :id";
     }
+    $registro = $conn->prepare($query);
+    $registro->bindParam(':id', $_SESSION['user_id']);
+    $registro->execute();
 }
-$registro = $conn->prepare($query);
-//$registro->bindParam(':id', $_SESSION['user_id']);
-$registro->bindParam(':id', $_SESSION['user_id']);
-$registro->execute();
+
 //$resultado = $registro->fetch(PDO::FETCH_ASSOC);
 //print_r($resultado);
 ?>
@@ -42,14 +42,14 @@ $registro->execute();
     <div class="mainContainer grid">
         <?php while (($resultado = $registro->fetch(PDO::FETCH_ASSOC))): ?>
 
-            <div class="item" curProfId="<?php echo $resultado['id']?>">
+            <div class="item" curProfId="<?php echo $resultado['id'] ?>">
                 <div class="itemImgContainer">
-                    <?php echo $resultado['nom_curs']?>
+                    <?php echo $resultado['nom_curs'] ?>
                 </div>
                 <div class="itemInfContainer">
-                  <!--  <p class="temNomCur"> nombre de curso:----- </p> -->
-                    <p class="temProfesor"> 
-                    <?php echo 'profesor: ' . $resultado['nombre']?>    
+                    <!--  <p class="temNomCur"> nombre de curso:----- </p> -->
+                    <p class="temProfesor">
+                        <?php echo 'profesor: ' . $resultado['nombre'] ?>
                     </p>
                 </div>
             </div>
@@ -111,17 +111,17 @@ $registro->execute();
     const elementoGrid = document.querySelector('.grid')
     const fragment = document.createDocumentFragment()
 
-    
+
 
     const animacionGrid = () => {
         const vw = window.innerWidth / 100
         const mingap = 30
-        let anchoGrid = elementoGrid.offsetWidth 
+        let anchoGrid = elementoGrid.offsetWidth
         //let numCols = Math.floor(mingap + Math.sqrt(mingap*mingap + 4*((20*vw+mingap)*anchoGrid) ) / (2*mingap) ) 
-        let numCols = Math.floor( anchoGrid / (vw * 20 + 30) ) 
+        let numCols = Math.floor(anchoGrid / (vw * 20 + 30))
         let numGaps = numCols - 1
-        let porcentajeCols = (numCols * 20 * vw * 100) /anchoGrid
-        let gap = Math.floor( (100 - porcentajeCols) / numGaps )
+        let porcentajeCols = (numCols * 20 * vw * 100) / anchoGrid
+        let gap = Math.floor((100 - porcentajeCols) / numGaps)
 
         elementoGrid.style.columnGap = gap + '%'
 
@@ -130,7 +130,7 @@ $registro->execute();
 
             requestAnimationFrame(animacionGrid)
         },)
-        
+
     }
 
     window.addEventListener('DOMContentLoaded', () => {
@@ -139,5 +139,5 @@ $registro->execute();
 
 
 
-    
+
 </script>
