@@ -19,8 +19,8 @@
     <div id="sidebar" class="sidebar">
         <div class="sideMenu">Menu</div>
         <div id="sd" class="sideLista">
-            <div id="index" class="row">
-                <i id="index" class="fas bi-search" style="margin-inline-end: 3px;"></i>
+            <div id="home" class="row">
+                <i id="home" class="fas bi-search" style="margin-inline-end: 3px;"></i>
                 Home
             </div>
             <div id="cursos" class="row">

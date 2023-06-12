@@ -1,134 +1,82 @@
 <?php
 session_start();
-require 'connection.php';
-
-//if(isset($_SESSION['user_maestro'])){
 if (isset($_SESSION['user_id'])) {
-    if (isset($_SESSION['maestro'])) {
-        $query = "SELECT maestros.nombre, curso.nom_curs, maestros.id
-        FROM maestros 
-        INNER JOIN cur_prof ON maestros.id = cur_prof.id_prof 
-        INNER JOIN curso ON cur_prof.id_cur = curso.id 
-        WHERE maestros.id = :id";
-    } else {
-        $query = "SELECT maestros.nombre, curso.nom_curs, cur_prof.id
-            FROM alumnos 
-            INNER JOIN cur_alu ON alumnos.id = cur_alu.id_alum 
-            INNER JOIN cur_prof ON cur_alu.id_cur = cur_prof.id
-            INNER JOIN maestros ON cur_prof.id_prof = maestros.id
-            INNER JOIN curso ON cur_prof.id_cur = curso.id
-            WHERE alumnos.id = :id";
-    }
-    $registro = $conn->prepare($query);
-    $registro->bindParam(':id', $_SESSION['user_id']);
-    $registro->execute();
+    header('Location: index.php');
 }
 
-//$resultado = $registro->fetch(PDO::FETCH_ASSOC);
-//print_r($resultado);
+require 'connection.php';
+
+if (!empty($_POST['correo']) && !empty($_POST['contrasena'])) {
+    $correo = $_POST['correo'];
+    $contrasena = $_POST['contrasena'];
+
+    // Verificar en la tabla de alumnos
+    $alumnos_query = $conn->prepare('SELECT id, nombre, correo, contrasena FROM alumnos WHERE correo = :correo');
+    $alumnos_query->bindParam(':correo', $correo);
+    $alumnos_query->execute();
+    $alumno = $alumnos_query->fetch(PDO::FETCH_ASSOC);
+
+    // Verificar en la tabla de maestros si no se encontró en la tabla de alumnos
+    if (!$alumno) {
+        $maestros_query = $conn->prepare('SELECT id, nombre, correo, contrasena FROM maestros WHERE correo = :correo');
+        $maestros_query->bindParam(':correo', $correo);
+        $maestros_query->execute();
+        $maestro = $maestros_query->fetch(PDO::FETCH_ASSOC);
+
+        if ($maestro && password_verify($contrasena, $maestro['contrasena'])) {
+            $_SESSION['user_id'] = $maestro['id'];
+            $_SESSION['maestro'] = '1';
+            $_SESSION['user_id'] = $maestro['nombre'];
+            header('Location: ./home.php');
+        } else {
+            $message = 'Invalid email or password. Please try again.';
+        }
+    } else {
+        if (password_verify($contrasena, $alumno['contrasena'])) {
+            $_SESSION['user_id'] = $alumno['id'];
+            $_SESSION['nombre'] = $alumno['nombre'];
+            header('Location: ./home.php');
+        } else {
+            $message = 'Invalid email or password. Please try again.';
+        }
+    }
+}
 ?>
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In to an Account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tilt+Prism&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/elements.css">
+</head>
+<body>
 <?php require_once('./components/header.php') ?>
-<main id="mainContainer">
-    <div class="mainContainer grid">
-        <?php while (($resultado = $registro->fetch(PDO::FETCH_ASSOC))): ?>
+<main>
+  <div id="mainContainerLogin" class="mainContainerLogin">
+    <div class="loginBox">
+      <?php if(!empty($message)): ?>
+        <p><?= $message ?></p>
+      <?php endif; ?>
 
-            <div class="item" curProfId="<?php echo $resultado['id'] ?>">
-                <div class="itemImgContainer">
-                    <?php echo $resultado['nom_curs'] ?>
-                </div>
-                <div class="itemInfContainer">
-                    <!--  <p class="temNomCur"> nombre de curso:----- </p> -->
-                    <p class="temProfesor">
-                        <?php echo 'profesor: ' . $resultado['nombre'] ?>
-                    </p>
-                </div>
-            </div>
+      <h1>Log In Please</h1>
 
-        <?php endwhile; ?>
+      <form action="login.php" method="post">
+        <input type="correo" name="correo" placeholder="Enter Your Email...">
+        <input type="contrasena" name="contrasena" placeholder="Enter Your Password...">
+        <input type="submit" value="Login">
+      </form>
+      <span> New User? - <a href="registro.php">Sign Up</a></span>
     </div>
+  </div>
 </main>
-
 <?php require_once('./components/footer.php') ?>
 
-<style>
-    .grid {
-        width: 100%;
-        max-height: fit-content;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(20vw, 20vw));
-        grid-template-rows: repeat(auto-fit, minmax(20vh, 20vh));
-        row-gap: 4vh;
-    }
-
-    .item {
-        height: 20vh;
-        width: 20vw;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .itemImgContainer {
-        height: 13vh;
-        min-height: 13vh;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: orange;
-        color: white;
-        font-size: larger;
-        text-align: center;
-    }
-
-    .itemInfContainer {
-        height: 7vh;
-        min-height: 7vh;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: start;
-        background-color: white;
-    }
-
-    .itemInfContainer p {
-        margin-block: 2px;
-    }
-</style>
-
-<script>
-    const main = document.getElementById('mainContainer')
-    const elementoGrid = document.querySelector('.grid')
-    const fragment = document.createDocumentFragment()
-
-
-
-    const animacionGrid = () => {
-        const vw = window.innerWidth / 100
-        const mingap = 30
-        let anchoGrid = elementoGrid.offsetWidth
-        //let numCols = Math.floor(mingap + Math.sqrt(mingap*mingap + 4*((20*vw+mingap)*anchoGrid) ) / (2*mingap) ) 
-        let numCols = Math.floor(anchoGrid / (vw * 20 + 30))
-        let numGaps = numCols - 1
-        let porcentajeCols = (numCols * 20 * vw * 100) / anchoGrid
-        let gap = Math.floor((100 - porcentajeCols) / numGaps)
-
-        elementoGrid.style.columnGap = gap + '%'
-
-        setTimeout(() => {
-            //console.log('ancho => ', elementoGrid.offsetWidth , ' @@ num cols ', numCols , 'porcentajecol', porcentajeCols , 'gap', gap)
-
-            requestAnimationFrame(animacionGrid)
-        },)
-
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-        requestAnimationFrame(animacionGrid)
-    })
-
-
-
-
-</script>
+</body>
+</html>
