@@ -85,7 +85,8 @@ CREATE TABLE `maestros` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `correo` varchar(255) NOT NULL,
-  `contrasena` varchar(255) NOT NULL
+  `contrasena` varchar(255) NOT NULL,
+  `descripcion` varchar(255)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
