@@ -1,8 +1,8 @@
 <!--Creo que esta linea es importante para la conexion a la base de datos, si ven algun problema lo comentan porfavor-->
 <?php 
-    $server = 'localhost';
+    $server = 'localhost:8889';
     $username = 'root';
-    $password = '';
+    $password = 'root';
     $database = 'sculuyi';
     try {
         $conn = new PDO("mysql:host=$server; dbname=$database;", $username, $password);

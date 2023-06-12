@@ -39,7 +39,10 @@
                 <i class="fas bi-search" style="margin-inline-end: 3px;"></i>
                 Constact us
             </div>
-
+            <div id="logout" class="row">
+            <i class="fas bi-search" style="margin-inline-end: 3px;"></i>
+                <a href="logout.php">Log Out</a>
+            </div>
         </div>
     </div>
 
@@ -62,7 +65,7 @@
         <div class="headerDiv" style="justify-content: end;">
             <div class="usuario hover">
                 <div class="nombreUsuario">
-                    <p id="nombreUsuario">nombre Usuario</p>
+                    <p>nombre Usuario</p>
                 </div>
                 <div class="icoContainer">
                     <img src="./partials/1.jpg" alt="">
