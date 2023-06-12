@@ -11,14 +11,14 @@ if (!empty($_POST['correo']) && !empty($_POST['contrasena'])) {
     $contrasena = $_POST['contrasena'];
 
     // Verificar en la tabla de alumnos
-    $alumnos_query = $conn->prepare('SELECT id, correo, contrasena FROM alumnos WHERE correo = :correo');
+    $alumnos_query = $conn->prepare('SELECT id, nombre, correo, contrasena FROM alumnos WHERE correo = :correo');
     $alumnos_query->bindParam(':correo', $correo);
     $alumnos_query->execute();
     $alumno = $alumnos_query->fetch(PDO::FETCH_ASSOC);
 
     // Verificar en la tabla de maestros si no se encontró en la tabla de alumnos
     if (!$alumno) {
-        $maestros_query = $conn->prepare('SELECT id, correo, contrasena FROM maestros WHERE correo = :correo');
+        $maestros_query = $conn->prepare('SELECT id, nombre, correo, contrasena FROM maestros WHERE correo = :correo');
         $maestros_query->bindParam(':correo', $correo);
         $maestros_query->execute();
         $maestro = $maestros_query->fetch(PDO::FETCH_ASSOC);
@@ -70,6 +70,7 @@ if (!empty($_POST['correo']) && !empty($_POST['contrasena'])) {
         <input type="contrasena" name="contrasena" placeholder="Enter Your Password...">
         <input type="submit" value="Login">
       </form>
+      <span> New User? - <a href="registro.php">Sign Up</a></span>
     </div>
   </div>
 </main>

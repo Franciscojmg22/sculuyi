@@ -1,6 +1,8 @@
 <?php
 session_start();
 require 'connection.php';
+session_unset();
+session_destroy();
 $maestro = 1;
 $idEje = 2;
 //if(isset($_SESSION['user_id'])){

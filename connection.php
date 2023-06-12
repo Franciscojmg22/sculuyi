@@ -2,9 +2,8 @@
 <?php 
     $server = 'localhost';
     $username = 'root';
-    $password = 'root';
+    $password = '';
     $database = 'sculuyi';
-    
     try {
         $conn = new PDO("mysql:host=$server; dbname=$database;", $username, $password);
     } catch (PDOException $error) {

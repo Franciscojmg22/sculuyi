@@ -1,12 +1,20 @@
 <?php
 session_start();
 require 'connection.php';
-$maestro = 0;
-$idEje = 1;
+//session_unset();
+//session_destroy();
+$_SESSION['user_id'] = '1';
+$_SESSION['maestro'] = '1';
+if(!isset($_SESSION['user_id'])){
+    echo 'no hay usuario';
+} else {
+    echo 'si hay usuario';
+}
+
 //if(isset($_SESSION['user_maestro'])){
-if (isset($idEje)) {
-    if ($maestro) {
-        $query = "SELECT maestros.nombre, curso.nom_curs 
+if (isset($_SESSION['user_id'])) {
+    if (isset($_SESSION['maestro'])) {
+        $query = "SELECT maestros.nombre, curso.nom_curs, maestros.id
         FROM maestros 
         INNER JOIN cur_prof ON maestros.id = cur_prof.id_prof 
         INNER JOIN curso ON cur_prof.id_cur = curso.id 
@@ -23,7 +31,7 @@ if (isset($idEje)) {
 }
 $registro = $conn->prepare($query);
 //$registro->bindParam(':id', $_SESSION['user_id']);
-$registro->bindParam(':id', $idEje);
+$registro->bindParam(':id', $_SESSION['user_id']);
 $registro->execute();
 //$resultado = $registro->fetch(PDO::FETCH_ASSOC);
 //print_r($resultado);
@@ -118,7 +126,7 @@ $registro->execute();
         elementoGrid.style.columnGap = gap + '%'
 
         setTimeout(() => {
-            console.log('ancho => ', elementoGrid.offsetWidth , ' @@ num cols ', numCols , 'porcentajecol', porcentajeCols , 'gap', gap)
+            //console.log('ancho => ', elementoGrid.offsetWidth , ' @@ num cols ', numCols , 'porcentajecol', porcentajeCols , 'gap', gap)
 
             requestAnimationFrame(animacionGrid)
         },)
