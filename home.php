@@ -66,6 +66,9 @@ if (isset($_SESSION['user_id'])) {
         width: 20vw;
         display: flex;
         flex-direction: column;
+        transform: translateY(-3px);
+        transform: translateX(3px);
+        box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.3);
     }
 
     .itemImgContainer {

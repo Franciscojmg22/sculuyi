@@ -1,3 +1,4 @@
+<?php session_start()?>
 <?php require_once('./components/header.php')?>
    
  <link rel="stylesheet" href="./css/maestros.css">
