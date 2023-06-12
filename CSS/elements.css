@@ -183,21 +183,24 @@ a{
 .sideMenu{
     width: block;
     height: 15%;
-    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #f0f0c9;
 }
 
 .sideLista{
     width: block;
-    height: 85%;
-    border: 1 solid black;
+    height: 65%;
 }
 
 .row{
     height: min-content;
-    width: fit-content;
+    width: block;
     margin-block: 25px;
-    margin-inline-start: 20px;
-    border: 1px solid orange;
+    padding-inline-start: 20px;
+    padding-block: 6px;
 }
 
 /*Apartado de Log In y Registro*/

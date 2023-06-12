@@ -47,6 +47,33 @@
         padding: none;
         border: 0px;
     }
+
+    .sideLista .row{
+        font-weight: 500;
+        color: white;
+        width: block;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    .divLogout{
+        width: block;
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btnLogout{
+        width: 12rem;
+        font-size: large;
+        font-weight: 600;
+        padding-block: 15px;
+        border: 0px;
+        background-color: rgb(201, 173, 14);
+        border-radius: 13px;
+    }
+
+
+
 </style>
 
 <script>

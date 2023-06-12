@@ -65,6 +65,8 @@ if (isset($_SESSION['user_id'])) {
 
 
 <style>
+    
+
     #nuevoCurso::backdrop {
         background-color: rgba(0, 0, 0, 0.5);
     }
@@ -103,6 +105,17 @@ if (isset($_SESSION['user_id'])) {
         width: 20vw;
         display: flex;
         flex-direction: column;
+        position: relative;
+        transform: translateY(-1px);
+        transform: translateX(1px);
+        box-shadow: -1px 1px 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .item:hover{
+        transform: translateY(-5px);
+        transform: translateX(5px);
+        box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
     }
 
     .itemImgContainer {

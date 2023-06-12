@@ -1,5 +1,6 @@
 <?php 
 require 'connection.php';
+session_start();
 $message = '';
 
 if (!empty($_POST['nombre']) &&!empty($_POST['correo']) && !empty($_POST['contrasena']) && !empty($_POST['contrasenna'])) {

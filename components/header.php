@@ -17,7 +17,9 @@
 
 <body>
     <div id="sidebar" class="sidebar">
-        <div class="sideMenu">Menu</div>
+        <div class="sideMenu">
+            <h1>Menú de navegación</h1>
+        </div>
         <div id="sd" class="sideLista">
             <div id="home" class="row">
                 <i id="home" class="fas bi-search" style="margin-inline-end: 3px;"></i>
@@ -39,10 +41,11 @@
                 <i id="contacto" class="fas bi-search" style="margin-inline-end: 3px;"></i>
                 Constact us
             </div>
-            <div id="logout" class="row">
-            <i id="logout" class="fas bi-search" style="margin-inline-end: 3px;"></i>
-                <a href="./logout.php">Log Out</a>
-            </div>
+        </div>
+        <div id="logout" class="divLogout">
+            <button id="logout" class="btnLogout">
+                Log Out
+            </button>
         </div>
     </div>
 
@@ -66,15 +69,15 @@
             <div class="usuario hover">
                 <div class="nombreUsuario">
                     <p>
-                        <?php if(isset($_SESSION['nombre'])):?>
-                            <p>
-                                <?php  echo 'nom: '.$_SESSION['nombre']; ?>
-                            </p>
-                        <?php else: ?>
-                            <p>Nombre Usuario</p>
-                        <?php endif;?>
-                    
-                </p>
+                        <?php if (isset($_SESSION['nombre'])): ?>
+                        <p>
+                            <?php echo 'nom: ' . $_SESSION['nombre']; ?>
+                        </p>
+                    <?php else: ?>
+                        <p>Nombre Usuario</p>
+                    <?php endif; ?>
+
+                    </p>
                 </div>
                 <div class="icoContainer">
                     <img src="./partials/1.jpg" alt="">

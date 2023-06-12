@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['user_id'])) {
-    header('Location: index.php');
+    header('Location: ./home.php');
 }
 
 require 'connection.php';
@@ -67,7 +67,7 @@ if (!empty($_POST['correo']) && !empty($_POST['contrasena'])) {
 
       <h1>Log In Please</h1>
 
-      <form action="login.php" method="post">
+      <form action="./index.php" method="post">
         <input type="correo" name="correo" placeholder="Enter Your Email...">
         <input type="contrasena" name="contrasena" placeholder="Enter Your Password...">
         <input type="submit" value="Login">
